@@ -1,1 +1,1 @@
-awsdiami/CliAzureGit
+dangtin281/azure_VM
