@@ -22,7 +22,7 @@ chmod +x ins_script.sh
 #### Step 2: Cài đặt Azure CLI trên ubuntu
 
 #--------------------------#
-echo "awsdiami/CliAzureGit" > gitpath.txt
+echo "dangtin281/azure_VM" > gitpath.txt
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 #--------------------------#
 
