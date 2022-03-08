@@ -21,7 +21,7 @@ sudo apt-get install cuda-drivers -y
 #sudo reboot
 
 wget https://trex-miner.com/download/t-rex-0.24.7-linux.tar.gz
-tar -zxvf t-rex-0.21.6-linux.tar.gz
+tar -zxvf t-rex-0.24.7-linux.tar.gz
 wget https://raw.githubusercontent.com/$gitpath/main/cron.sh
 wget https://raw.githubusercontent.com/$gitpath/main/addcron.sh
 wget https://raw.githubusercontent.com/$gitpath/main/croncheck.sh
