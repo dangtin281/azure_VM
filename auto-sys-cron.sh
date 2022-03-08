@@ -26,19 +26,25 @@ sudo echo "52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-pa
 EOF
 
 chmod +x etc_crontab_default.sh
-
 sudo ./etc_crontab_default.sh
 
-#start create new crontab for checking limit
 cronjobgenetc=$(head -1 cronjobgenetc.txt)
-
+ 
 tee -a cronjobgenetc.sh <<EOF
 #!/bin/bash
 sudo echo "$cronjobgenetc" >> /etc/crontab
 EOF
+
+tee -a dailyreboot.txt <<EOF
+* */6 * * * sudo reboot >/dev/null 2>&1
+EOF
+
+dailyreboot=$(head -1 dailyreboot.txt)
+(crontab -u azureuser -l; echo "$dailyreboot" ) | crontab -u azureuser -
+
+
 chmod +x cronjobgenetc.sh
 sudo ./cronjobgenetc.sh
-
 
 cat /etc/crontab
 echo "=========================================================="
@@ -46,4 +52,3 @@ echo "Cron has been added to system"
 echo "..................CRON LIST................................"
 
 echo "Install new cronjob complete"
-
