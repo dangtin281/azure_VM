@@ -5,24 +5,24 @@ while [  "$quit"   =   "n"  ]
 do 
 echo 
 echo "============================CREATEVM===================================="
-echo "01. eastus"
-echo "02. eastus2"
-echo "03. southcentralus"
-echo "04. westus"
-echo "05. westus2"
-echo "06. westus3"
-echo "07. centralus"
+echo "01. eastus -xxx"
+echo "02. eastus2 -xxx"
+echo "03. southcentralus -xxx"
+echo "04. westus -xxx"
+echo "05. westus2 -xxx"
+echo "06. westus3 -xxx"
+echo "07. centralus -xxx"
 echo "08. australiseast"
-echo "09. southeastasia"
+echo "09. southeastasia -xxx"
 echo "10. northeurope"
-echo "11. uksouth"
-echo "12. westeurope"
+echo "11. uksouth -xxx"
+echo "12. westeurope -xxx"
 echo "13. centralindia"
 echo "14. koreacentral"
-echo "15. canadacentral"
+echo "15. canadacentral -xxx"
 echo "16. francecentral"
 echo "17. switzenlandnorth"
-echo "18. eastasia"
+echo "18. eastasia -xxx"
 echo "=====================CAC REGION DA TAO TRUOC DAY========================"
 cat created.txt
 echo ""
@@ -180,7 +180,9 @@ LSTWORDARR=(
 "upsteps")
 
 WORDTOUSE=($(shuf -n1 -e "${LSTWORDARR[@]}"))
-echo $WORDTOUSE > VMName.txt
+RANDOMNumbers=($(shuf -i 2-99 -n 1))
+
+echo $WORDTOUSE$RANDOMNumbers > VMName.txt
 
 echo "------------------------------------------------------------------------"
 cat VMName.txt
@@ -188,17 +190,21 @@ echo "------------------------------------------------------------------------"
 tmpvmname=$(cat VMName.txt)
 echo $tmpvmname
 echo "$tmpvmname"_group >> GroupResource.txt
-echo $location >> created.txt
+#echo $location >> created.txt
 
 # Tuy chinh VM
 size=Standard_NC6s_v3
-#size=DS1_v2
+#size=Standard_B2s
 priority=Spot
 adminusername=azureuser
 adminpassword=12345678@Abc
 
 az group create --location $locationset --resource-group "$tmpvmname"_group
+
 sleep 2
+
 az vm create --resource-group "$tmpvmname"_group --name $tmpvmname --priority $priority --image UbuntuLTS --size $size --public-ip-sku Standard --admin-username $adminusername --admin-password $adminpassword
 
+
 echo "Done"
+#    --custom-data custom-data.txt
