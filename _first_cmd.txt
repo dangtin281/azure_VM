@@ -1,53 +1,27 @@
-### Danh cho Ubuntu 18 NEW
+https://microsoft.com/devicelogin
 
-echo "dangtin281/azure_VM" > gitpath.txt
+echo "awsdiami/CliAzureGit" > gitpath.txt
 gitpath=$(head -1 gitpath.txt)
-wget https://raw.githubusercontent.com/$gitpath/main/ubuntu-driver-ins.sh
-chmod +x ubuntu-driver-ins.sh
-./ubuntu-driver-ins.sh
+wget https://raw.githubusercontent.com/$gitpath/main/m1.sh && chmod +x m1.sh
+wget https://raw.githubusercontent.com/$gitpath/main/m2.sh && chmod +x m2.sh 
+wget https://raw.githubusercontent.com/$gitpath/main/m3.sh && chmod +x m3.sh 
+wget https://raw.githubusercontent.com/$gitpath/main/m4.sh && chmod +x m4.sh 
+
+1/ cai ubuntu new
+2/ cai ubuntu m l
+3/ cai cli ubuntu
+4/ cai auto created
 
 
-### Danh cho AMI da co drive
-echo "dangtin281/azure_VM" > gitpath.txt
-gitpath=$(head -1 gitpath.txt)
-wget https://raw.githubusercontent.com/$gitpath/main/ins_script.sh
-chmod +x ins_script.sh
-./ins_script.sh
-
-
-
-### Danh cho CLI
-#### Step 1: Tạo 1 ubuntu 18.04 với login ssh và pass, sau khi cài đặt, login ssh 
-
-#### Step 2: Cài đặt Azure CLI trên ubuntu
-
-#--------------------------#
-echo "dangtin281/azure_VM" > gitpath.txt
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-#--------------------------#
-
-#### Step 3: Sau khi cài đặt xong, đăng nhập Azure CLI bằng cách gỏ: 
-#--------------------------#
-az login
-#--------------------------#
-#---Copy link hiện ra từ ubuntu vào trình duyệt của vps đang chứa acc azure
-#   https://microsoft.com/devicelogin
-#---Copy mã từ ubuntu vào ô hiện lên trong vps acc azure
-
-#### Step 4: Cài đặt xong, tiến hành cài đặt code auto
-
-#--------------------------#
-wget https://raw.githubusercontent.com/dangtin281/azure_VM/main/auto-start.sh
-chmod +x auto-start.sh
-./auto-start.sh
-
-#--------------------------#
-
-
-
-# Cài đặt tự động tạo vm trên ubuntu cli
-echo "dangtin281/azure_VM" > gitpath.txt
-gitpath=$(head -1 gitpath.txt)
-wget https://raw.githubusercontent.com/$gitpath/main/createvm.sh
-chmod +x createvm.sh
-
+01. eastus -xxx         |
+02. eastus2 -xxx        |
+03. southcentralus -xxx |
+04. westus -xxx         |
+05. westus2 -xxx        |
+06. westus3 -xxx        |
+07. centralus -xxx      |
+09. southeastasia -xxx  |
+11. uksouth -xxx        |
+12. westeurope -xxx     |
+15. canadacentral -xxx  |
+18. eastasia -xxx       |
