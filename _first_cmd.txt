@@ -1,6 +1,6 @@
 https://microsoft.com/devicelogin
 
-echo "awsdiami/CliAzureGit" > gitpath.txt
+echo "dangtin281/azure_VM" > gitpath.txt
 gitpath=$(head -1 gitpath.txt)
 wget https://raw.githubusercontent.com/$gitpath/main/m1.sh && chmod +x m1.sh
 wget https://raw.githubusercontent.com/$gitpath/main/m2.sh && chmod +x m2.sh 
