@@ -21,7 +21,7 @@ az group list --subscription $subid
 
 read -p "Nhap vao ten ResourceGroup: " NameResourceGroup
 echo "Data received"
-echo $NameResourceGroup > GroupResource.txt
+echo $NameResourceGroup >> GroupResource.txt
 
 wget https://raw.githubusercontent.com/$gitpath/main/auto-run.sh
 wget https://raw.githubusercontent.com/$gitpath/main/auto-add.sh
@@ -37,6 +37,5 @@ chmod +x auto-sys-cron.sh
 
 sudo /etc/init.d/cron start
 ./auto-sys-cron.sh
-
 
 
