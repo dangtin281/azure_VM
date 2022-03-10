@@ -19,4 +19,3 @@ echo "Cai Group mac dinh"
 echo "az account set --subscription $setsubid1"
 echo "az account set --subscription $setsubid2"
 rm -rf 1.1sub.txt 2.1sub.txt
-
