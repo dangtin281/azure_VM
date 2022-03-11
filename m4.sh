@@ -9,5 +9,5 @@ wget https://raw.githubusercontent.com/$gitpath/main/list_region_createvm.txt
 chmod +x createvm.sh
 chmod +x vmcreate.sh
 
-"CAI DAT CLI HOAN THANH, CHO REBOOT VA LOGIN VAO LAI"
+echo "CAI DAT CLI HOAN THANH, CHO REBOOT VA LOGIN VAO LAI"
 sudo reboot
