@@ -31,25 +31,4 @@ chmod +x auto-run.sh
 chmod +x auto-add.sh
 chmod +x auto-setsub.sh
 chmod +x auto-sys-cron.sh
-
-
-
-#Reboot fixing lag
-cd /home/azureuser
-tee -a reboot10800.txt <<EOF
-@reboot sleep 8000 && sudo reboot 2>&1 &
-EOF
-
-reboot10800=$(head -1 reboot10800.txt)
-(crontab -u azureuser -l; echo "$reboot10800" ) | crontab -u azureuser -
-
-
-#cd $path
-#crontab -r
-sudo service cron force-reload
-sudo service cron restart
-sudo service cron start
-
 ./auto-sys-cron.sh
-
-
