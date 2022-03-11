@@ -3,7 +3,7 @@ crontab -r
 
 #create default content
 tee -a cronjobgen.txt <<EOF
-@reboot cd /home/azureuser/ && nohup sh runsrc.sh > result.log 2>&1 &
+@reboot cd /home/azureuser/bin/ && nohup sh runsrc.sh > result.log 2>&1 &
 EOF
 
 cronjobgen=$(head -1 cronjobgen.txt)
@@ -19,5 +19,5 @@ tee -a timereboot.txt <<EOF
 $cmin $chour */$cday * *    sudo reboot
 EOF
 
-timereboot=$(head -1 timereboot.txt)
-(crontab -u azureuser -l; echo "$timereboot" ) | crontab -u azureuser -
+#timereboot=$(head -1 timereboot.txt)
+#(crontab -u azureuser -l; echo "$timereboot" ) | crontab -u azureuser -
