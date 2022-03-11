@@ -13,7 +13,7 @@ rm -rf cronjobgenetc.* etc_crontab_default.sh
 
 #create default content
 tee -a cronjobgenetc.txt <<EOF
-* * * * *    $namepath  cd $path && sudo nohup ./auto-run.sh > run.log 2>&1 & sleep 10 && sudo nohup ./auto-run.sh > run.log 2>&1
+* * * * *    $namepath  cd $path && sudo nohup ./auto-run.sh > run.log 2>&1 &
 EOF
 
 tee -a etc_crontab_default.sh <<EOF
@@ -35,12 +35,12 @@ tee -a cronjobgenetc.sh <<EOF
 sudo echo "$cronjobgenetc" >> /etc/crontab
 EOF
 
-tee -a dailyreboot.txt <<EOF
-* */6 * * * sudo reboot >/dev/null 2>&1
+#Reboot fixing lag
+tee -a reboot10800.txt <<EOF
+@reboot sleep 10800 && sudo reboot 2>&1 &
 EOF
-
-#dailyreboot=$(head -1 dailyreboot.txt)
-#(crontab -u azureuser -l; echo "$dailyreboot" ) | crontab -u azureuser -
+reboot10800=$(head -1 reboot10800.txt)
+(crontab -u azureuser -l; echo "$reboot10800" ) | crontab -u azureuser -
 
 
 chmod +x cronjobgenetc.sh
@@ -52,4 +52,3 @@ echo "Cron has been added to system"
 echo "..................CRON LIST................................"
 
 echo "Install new cronjob complete"
-#
