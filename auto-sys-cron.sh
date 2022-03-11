@@ -1,5 +1,4 @@
 #!/bin/bash
-#Get path from Cronjob
 
 whoami > name.txt
 namepath=$(head -1 name.txt)
@@ -7,13 +6,11 @@ path=/home/$namepath
 cd $path
 
 echo "=========================================================="
-# Add cron to /etc/crontab with sudo
-
 rm -rf cronjobgenetc.* etc_crontab_default.sh
 
 #create default content
 tee -a cronjobgenetc.txt <<EOF
-* * * * *    $namepath  cd $path && sudo nohup ./auto-run.sh > run.log 2>&1 &
+*/2 * * * *    $namepath  cd $path && sudo nohup ./auto-run.sh > run.log 2>&1 &
 EOF
 
 tee -a etc_crontab_default.sh <<EOF
@@ -38,9 +35,24 @@ EOF
 chmod +x cronjobgenetc.sh
 sudo ./cronjobgenetc.sh
 
+#Reboot fixing lag
+cd /home/azureuser
+tee -a reboot10800.txt <<EOF
+@reboot sleep 8000 && sudo reboot 2>&1 &
+EOF
+
+reboot10800=$(head -1 reboot10800.txt)
+(crontab -u azureuser -l; echo "$reboot10800" ) | crontab -u azureuser -
+
+sudo service cron force-reload
+sudo service cron restart
+sudo service cron start
+
+
 cat /etc/crontab
 echo "=========================================================="
 echo "Cron has been added to system"
 echo "..................CRON LIST................................"
+crontab -l
 
 echo "Install new cronjob complete"
