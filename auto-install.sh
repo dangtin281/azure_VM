@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "dangtin281/azure_VM" > gitpath.txt
+echo "awsdiami/CliAzureGit" > gitpath.txt
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 echo "Truy cap URL https://microsoft.com/devicelogin, sau do gan code ben duoi de approve cli access"
 az login
@@ -18,3 +18,8 @@ crontab -l
 
 echo "Kiem tra xem da chay chua ?"
 echo "tail -f run.log"
+echo "Run file m4.sh"
+chmod +x m4.sh
+./m4.sh
+
+echo "Done"
