@@ -20,7 +20,8 @@ installcheck=$(head -1 installcheck.txt)
 
 cd /home/azureuser/
 ./m1.sh
-sudo chown -R azureuser:azureuser /home/azureuser/bin/
+#sudo chown -R azureuser:azureuser /home/azureuser/bin/
+sudo chown -R azureuser:azureuser /home/azureuser/
 rm -rf /home/azureuser/install.lock
 echo "Install Completed" > /home/azureuser/installed.lock
 
